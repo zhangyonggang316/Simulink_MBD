@@ -1,0 +1,31 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  DemoCANDlg.cpp
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(1087): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(1086): warning C4101: “i”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(1393): warning C4101: “i”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(2096): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(2023): warning C4101: “l”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(2023): warning C4101: “i”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(2409): warning C4101: “systime1”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(2835): warning C4101: “SendID”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(2999): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(3008): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 参见“sprintf”的声明
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(3057): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(3105): warning C4554: “<<”: 检查运算符优先级是否存在的可能的错误；使用括号阐明优先级
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(3110): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(3355): warning C4101: “buf”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(3920): warning C4101: “buf”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4182): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4396): warning C4101: “buf”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4557): warning C4101: “ReceivedID”: 未引用的局部变量
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4813): warning C4018: “>”: 有符号/无符号不匹配
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4842): warning C4018: “>”: 有符号/无符号不匹配
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4875): warning C4018: “<”: 有符号/无符号不匹配
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4908): warning C4018: “>”: 有符号/无符号不匹配
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4910): warning C4018: “<”: 有符号/无符号不匹配
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4923): warning C4018: “>”: 有符号/无符号不匹配
+d:\liangxl\pjt\repository_10.8.11.56\vc_example_usb-can\democandlg.cpp(4928): warning C4018: “<”: 有符号/无符号不匹配
+  DemoCAN.vcxproj -> D:\Liangxl\Pjt\Repository_10.8.11.56\vc_example_usb-can\.\Debug\DemoCAN.exe
