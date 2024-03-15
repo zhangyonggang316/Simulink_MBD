@@ -1,0 +1,32 @@
+%implements  bsw_lowpower "C"
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "A"
+  %break
+  %case 2
+  %assign p1 = "B"
+  %break
+  %endswitch
+
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+  
+  %assign v1 = LibBlockInputSignal(0, "", "", 0)
+
+%%  低功耗 , 唤醒端口 , 输出 ,
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  lowpower , _IO_INPUT_%<p1>%<p2> , %<v1> ,
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

@@ -1,0 +1,81 @@
+%implements  bsw_base "C"
+%function Start(block, system) void
+  
+  %assign p1 = CAST("Number",LibBlockParameterValue(P1,0))
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+  %assign p3 = CAST("Number",LibBlockParameterValue(P3,0))
+  %assign t4 = CAST("Number",LibBlockParameterValue(P4,0))
+  %assign p5 = CAST("Number",LibBlockParameterValue(P5,0))
+  %assign t6 = CAST("Number",LibBlockParameterValue(P6,0))
+  %assign t7 = CAST("Number",LibBlockParameterValue(P7,0))
+  %assign t8 = CAST("Number",LibBlockParameterValue(P8,0))
+  %assign t9 = CAST("Number",LibBlockParameterValue(P9,0))
+
+  %switch t4
+  %case 1
+  %assign p4 = "Base"
+  %break
+  %case 2
+  %assign p4 = "Alpha"
+  %break
+  %case 3
+  %assign p4 = "Beta"
+  %break
+  %case 4
+  %assign p4 = "Release"
+  %break
+  %endswitch
+  
+  %switch t6
+  %case 1
+  %assign p6 = 250
+  %break
+  %case 2
+  %assign p6 = 500
+  %break
+  %endswitch
+
+  %switch t7
+  %case 1
+  %assign p7 = 250
+  %break
+  %case 2
+  %assign p7 = 500
+  %break
+  %endswitch
+
+  %switch t8
+  %case 1
+  %assign p8 = 250
+  %break
+  %case 2
+  %assign p8 = 500
+  %break
+  %endswitch
+
+  %switch t9
+  %case 1
+  %assign p9 = 0
+  %break
+  %case 2
+  %assign p9 = 1
+  %break
+  %case 3
+  %assign p9 = 2
+  %break
+  %endswitch
+
+%%  base , 0 , 版本号1 版本号2 版本号3 版本号4 ID 波特率0 波特率1 波特率2 UDS通道,
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  base, 0 , %<p1> %<p2> %<p3> %<p4> %<p5> %<p6> %<p7> %<p8> %<p9> , 
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

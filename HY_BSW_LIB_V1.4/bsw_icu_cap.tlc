@@ -1,0 +1,56 @@
+%implements  bsw_icu_cap "C"
+
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "A"
+  %break
+  %case 2
+  %assign p1 = "B"
+  %break
+  %endswitch
+
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+
+  %assign p3 = CAST("Number",LibBlockParameterValue(P3,0))
+
+  %assign t4 = CAST("Number",LibBlockParameterValue(P4,0))
+
+  %switch t4
+  %case 1
+  %assign p4 = "A"
+  %break
+  %case 2
+  %assign p4 = "B"
+  %break
+  %endswitch
+
+  %assign p5 = CAST("Number",LibBlockParameterValue(P5,0))
+  
+  %assign v1 = LibBlockOutputSignal(0, "", "", 0)
+
+  %assign v2 = LibBlockOutputSignal(1, "", "", 0)
+
+  %assign v3 = LibBlockOutputSignal(2, "", "", 0)
+
+%%  输入捕获 , 端口 , 频率 占空比 方向, 方向检测使能  方向检测端口
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  %if p3 == 0
+  icu_cap , _ICU_%<p1>%<p2> , %<v1> %<v2> %<v3> , false _IO_INPUT_NONE
+  %else
+  icu_cap , _ICU_%<p1>%<p2> , %<v1> %<v2> %<v3> , true _IO_INPUT_%<p4>%<p5>
+  %endif
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

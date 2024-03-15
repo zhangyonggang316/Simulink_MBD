@@ -1,0 +1,36 @@
+%implements  bsw_can_rx "C"
+
+%function Start(block, system) void
+
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "_CAN_COM_0"
+  %break
+  %case 2
+  %assign p1 = "_CAN_COM_1"
+  %break
+  %case 3
+  %assign p1 = "_CAN_COM_2"
+  %break
+  %endswitch
+
+  %assign v1 = LibBlockOutputSignal(0, "", "", 0)
+
+  %assign a1 = CAST("Number",LibBlockParameterValue(P2,0))
+
+%%  CAN接收，端口，报文 ， ID
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  can_rx , %<p1> , %<v1> , %<a1>
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

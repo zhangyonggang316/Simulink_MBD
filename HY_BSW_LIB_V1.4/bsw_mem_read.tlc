@@ -1,0 +1,28 @@
+%implements  bsw_mem_read "C"
+
+%function Start(block, system) void
+
+  %assign p1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %assign v1 = LibBlockOutputSignal(0, "", "", 0)
+
+  %assign v2 = LibBlockOutputSignal(1, "", "", 0)
+
+  %assign a1 = LibBlockOutputSignalDataTypeName(1, "")
+
+  %assign a2 = LibBlockOutputSignalWidth(1)
+
+%%  内存，ID，当前状态 待读数据 ，读数据类型 读数据长度
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  mem_read , %<p1> , %<v1> %<v2> , %<a1> %<a2>
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

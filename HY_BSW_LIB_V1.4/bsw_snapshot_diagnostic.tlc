@@ -1,0 +1,26 @@
+%implements  bsw_snapshot_diagnostic "C"
+
+%function Start(block, system) void
+
+  %assign p1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %assign v1 = LibBlockInputSignal(0, "", "", 0)
+
+  %assign a1 = LibBlockInputSignalDataTypeName(0, "")
+
+  %assign a2 = LibBlockInputSignalWidth(0)
+
+%%  故障快照，ID，待写数据 ，写数据类型 写数据长度
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  diag_snapshot , %<p1> , %<v1> , %<a1> %<a2>
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

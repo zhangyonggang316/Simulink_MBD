@@ -1,0 +1,32 @@
+%implements  bsw_icu_set "C"
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "A"
+  %break
+  %case 2
+  %assign p1 = "B"
+  %break
+  %endswitch
+ 
+  %assign v1 = LibBlockInputSignal(0, "", "", 0)
+  %assign v2 = LibBlockInputSignal(1, "", "", 0)
+
+%%  icu_set , 端口 , 分频系数 清零时间 ,
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  icu_set , _ICU_%<p1>%<p2> , %<v1> %<v2> ,
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

@@ -1,0 +1,28 @@
+%implements  bsw_mem_write "C"
+
+%function Start(block, system) void
+
+  %assign p1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %assign v1 = LibBlockInputSignal(0, "", "", 0)
+
+  %assign v2 = LibBlockInputSignal(1, "", "", 0)
+
+  %assign a1 = LibBlockInputSignalDataTypeName(1, "")
+
+  %assign a2 = LibBlockInputSignalWidth(1)
+
+%%  内存，ID，指令 待写数据 ，写数据类型 写数据长度
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  mem_write , %<p1> , %<v1> %<v2> , %<a1> %<a2>
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

@@ -1,0 +1,44 @@
+%implements  bsw_icu_width "C"
+
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "A"
+  %break
+  %case 2
+  %assign p1 = "B"
+  %break
+  %endswitch
+
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+
+  %assign t3 = CAST("Number",LibBlockParameterValue(P3,0))
+
+  %switch t3
+  %case 1
+  %assign p3 = "widthCount_Low"
+  %break
+  %case 2
+  %assign p3 = "widthCount_High"
+  %break
+  %endswitch
+  
+  %assign v1 = LibBlockOutputSignal(0, "", "", 0)
+
+%%  脉宽统计 , 端口 , 脉宽累计值 , 模式
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  icu_width , _ICU_%<p1>%<p2> , %<v1> , %<p3>
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

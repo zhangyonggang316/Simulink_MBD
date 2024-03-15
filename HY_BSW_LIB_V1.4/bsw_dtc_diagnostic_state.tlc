@@ -1,0 +1,25 @@
+%implements  bsw_dtc_diagnostic_state "C"
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+  
+  %assign t2 = CAST("Number",LibBlockParameterValue(P2,0))
+
+  %assign p1 = (t1 + 64) * 65536 + t2
+
+  %assign v1 = LibBlockOutputSignal(0, "", "", 0)
+
+%%  name, dtc, state,
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  diag_dtc_state , %<p1> , %<v1> ,
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

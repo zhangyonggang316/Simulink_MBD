@@ -1,0 +1,39 @@
+%implements  bsw_sol_pro "C"
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "A"
+  %break
+  %case 2
+  %assign p1 = "B"
+  %break
+  %endswitch
+
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+  
+  %assign v1 = LibBlockInputSignal(0, "", "", 0)
+  %assign v2 = LibBlockInputSignal(1, "", "", 0)
+  %assign v3 = LibBlockInputSignal(2, "", "", 0)
+  %assign v4 = LibBlockInputSignal(3, "", "", 0)
+  %assign v5 = LibBlockInputSignal(4, "", "", 0)
+  %assign v6 = LibBlockInputSignal(5, "", "", 0)
+  %assign v7 = LibBlockInputSignal(6, "", "", 0)
+  %assign v8 = LibBlockInputSignal(7, "", "", 0)
+
+%%  比例阀,端口,设置电流 基频 颤振使能 颤振频率 颤振幅值 KP KI 当前电流 读电流使能,
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  sol_pro , _SOLENOID_%<p1>%<p2> , %<v1> %<v2> %<v3> %<v4> %<v5> %<v6> %<v7> %<v8> ,
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction

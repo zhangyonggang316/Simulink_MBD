@@ -1,0 +1,47 @@
+%implements  bsw_icu_pulse "C"
+
+%function Start(block, system) void
+  
+  %assign t1 = CAST("Number",LibBlockParameterValue(P1,0))
+
+  %switch t1
+  %case 1
+  %assign p1 = "A"
+  %break
+  %case 2
+  %assign p1 = "B"
+  %break
+  %endswitch
+
+  %assign p2 = CAST("Number",LibBlockParameterValue(P2,0))
+
+  %assign t3 = CAST("Number",LibBlockParameterValue(P3,0))
+
+  %switch t3
+  %case 1
+  %assign p3 = "pulseCount_FallingEdge"
+  %break
+  %case 2
+  %assign p3 = "pulseCount_RisingEdge"
+  %break
+  %case 3
+  %assign p3 = "pulseCount_capture"
+  %break
+  %endswitch
+  
+  %assign v1 = LibBlockOutputSignal(0, "", "", 0)
+
+%%  脉冲统计 , 端口 , 脉宽累计值 , 模式
+
+  %openfile cfg = "varcfg" , "a"
+  %selectfile cfg
+  icu_pulse , _ICU_%<p1>%<p2> , %<v1> , %<p3>
+  %closefile cfg
+%endfunction
+
+%function BlockTypeSetup(block, system) void
+  %openfile cfg = "varcfg"
+  %selectfile cfg
+  
+  %closefile cfg
+%endfunction
